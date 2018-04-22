@@ -1,4 +1,4 @@
-# Vökuró
+# Dogner Admin
 
 This is a sample application for the [Phalcon Framework](https://github.com/phalcon/cphalcon).
 We expect to implement as many features as possible to showcase the framework and its potential.
@@ -27,15 +27,15 @@ To run this application on your machine, you need at least:
 Then you'll need to create the database and initialize schema:
 
 ```bash
-echo 'CREATE DATABASE vokuro' | mysql -u root
-cat schemas/vokuro.sql | mysql -u root vokuro
+echo 'CREATE DATABASE project' | mysql -u root
+cat schemas/project.sql | mysql -u root project
 ```
 
 Also you can override application config by creating `app/config/config.dev.php` (already gitignored).
 
 ### Installing Dependencies via Composer
 
-Vökuró's dependencies must be installed using Composer. Install composer in a common location or in your project:
+Project dependencies must be installed using Composer. Install composer in a common location or in your project:
 
 ```bash
 curl -s http://getcomposer.org/installer | php
@@ -44,7 +44,7 @@ curl -s http://getcomposer.org/installer | php
 Run the composer installer:
 
 ```bash
-cd vokuro
+cd Your Project
 php composer.phar install
 ```
 
@@ -54,7 +54,7 @@ php composer.phar install
 ## Improving this Sample
 
 Phalcon is an open source project and a volunteer effort.
-Vökuró does not have human resources fully dedicated to the maintenance of this software.
+project does not have human resources fully dedicated to the maintenance of this software.
 If you want something to be improved or you want a new feature please submit a Pull Request.
 
 ## License
