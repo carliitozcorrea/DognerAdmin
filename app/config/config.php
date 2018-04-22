@@ -7,9 +7,9 @@ return new Config([
     'database' => [
         'adapter' => 'Mysql',
         'host' => '127.0.0.1',
-        'username' => 'root',
-        'password' => '',
-        'dbname' => 'vokuro'
+        'username' => 'carlos',
+        'password' => 'UYj5frQE6yudEB5b',
+        'dbname' => 'dogner_admin'
     ],
     'application' => [
         'controllersDir' => APP_PATH . '/controllers/',
@@ -20,16 +20,16 @@ return new Config([
         'pluginsDir'     => APP_PATH . '/plugins/',
         'cacheDir'       => BASE_PATH . '/cache/',
         'baseUri'        => '/',
-        'publicUrl'      => 'vokuro.phalconphp.com',
+        'publicUrl'      => '',
         'cryptSalt'      => 'eEAfR|_&G&f,+vU]:jFr!!A&+71w1Ms9~8_4L!<@[N@DyaIP_2My|:+.u>/6m,$D'
     ],
     'mail' => [
-        'fromName' => 'Vokuro',
-        'fromEmail' => 'phosphorum@phalconphp.com',
+        'fromName' => 'Dogner Admin',
+        'fromEmail' => 'carloscorrea@neuland.com.mx',
         'smtp' => [
             'server' => 'smtp.gmail.com',
-            'port' => 587,
-            'security' => 'tls',
+            'port' => 465,
+            'security' => 'ssl',
             'username' => '',
             'password' => ''
         ]
