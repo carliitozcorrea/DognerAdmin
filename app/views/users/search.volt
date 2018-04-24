@@ -20,7 +20,7 @@
             <th>Profile</th>
             <th>Banned?</th>
             <th>Suspended?</th>
-            <th>Confirmed?</th>
+            <th>Active?</th>
         </tr>
     </thead>
     <tbody>
@@ -32,7 +32,7 @@
             <td>{{ user.profile.name }}</td>
             <td>{{ user.banned == 'Y' ? 'Yes' : 'No' }}</td>
             <td>{{ user.suspended == 'Y' ? 'Yes' : 'No' }}</td>
-            <td>{{ user.active == 'Y' ? 'Yes' : 'No' }}</td>
+            <td>{{ user.status == 1 ? 'Yes' : 'No' }}</td>
             <td width="12%">{{ link_to("users/edit/" ~ user.id, '<i class="icon-pencil"></i> Edit', "class": "btn") }}</td>
             <td width="12%">{{ link_to("users/delete/" ~ user.id, '<i class="icon-remove"></i> Delete', "class": "btn") }}</td>
         </tr>

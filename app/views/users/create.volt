@@ -19,6 +19,15 @@
         <label for="name">Name</label>
         {{ form.render("name") }}
     </div>
+    <div class="clearfix">
+    <label for="name">Paternal</label>
+    {{ form.render("paternal") }}
+    </div>
+
+      <div class="clearfix">
+          <label for="name">Maternal</label>
+          {{ form.render("maternal") }}
+      </div>
 
     <div class="clearfix">
         <label for="email">E-Mail</label>
