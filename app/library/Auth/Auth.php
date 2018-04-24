@@ -22,7 +22,6 @@ class Auth extends Component
      */
     public function check($credentials)
     {
-
         // Check if the user exist
         $user = Users::findFirstByEmail($credentials['email']);
         if ($user == false) {
@@ -204,7 +203,7 @@ class Auth extends Component
      */
     public function checkUserFlags(Users $user)
     {
-        if ($user->active != 'Y') {
+        if ($user->status != 1) {
             throw new Exception('The user is inactive');
         }
 

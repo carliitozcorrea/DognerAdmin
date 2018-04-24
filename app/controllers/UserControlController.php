@@ -48,7 +48,7 @@ class UserControlController extends ControllerBase
 
         $confirmation->confirmed = 'Y';
 
-        $confirmation->user->active = 'Y';
+        $confirmation->user->status = 1;
 
         /**
          * Change the confirmation to 'confirmed' and update the user to 'active'

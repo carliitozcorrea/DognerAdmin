@@ -40,6 +40,18 @@ class Users extends Model
      *
      * @var string
      */
+    public $paternal;
+
+    /**
+     * @var string
+     */
+    public $maternal;
+
+
+    /**
+     *
+     * @var string
+     */
     public $mustChangePassword;
 
     /**
@@ -64,13 +76,28 @@ class Users extends Model
      *
      * @var string
      */
-    public $active;
+    public $status;
+
+    /**
+     * @var \DateTime
+     */
+    public $modified;
+
+    /**
+     * @var \DateTime
+     */
+    public $created;
 
     /**
      * Before create the user assign a password
      */
     public function beforeValidationOnCreate()
     {
+
+        $today = new \DateTime();
+        $this->modified = $today->format('Y-m-d H:i:s');
+        $this->created = $today->format('Y-m-d H:i:s');
+
         if (empty($this->password)) {
 
             // Generate a plain temporary password
@@ -91,9 +118,9 @@ class Users extends Model
         // The account must be confirmed via e-mail
         // Only require this if emails are turned on in the config, otherwise account is automatically active
         if ($this->getDI()->get('config')->useMail) {
-            $this->active = 'N';
+            $this->status = true;
         } else {
-            $this->active = 'Y';
+            $this->status = true;
         }
         
         // The account is not suspended by default
@@ -101,6 +128,13 @@ class Users extends Model
 
         // The account is not banned by default
         $this->banned = 'N';
+    }
+
+    public function beforeValidationOnUpdate()
+    {
+        $today = new \DateTime();
+        $format = $today->format('Y-m-d H:i:s');
+        $this->modified = $format;
     }
 
     /**
@@ -111,7 +145,7 @@ class Users extends Model
         // Only send the confirmation email if emails are turned on in the config
         if ($this->getDI()->get('config')->useMail) {
 
-            if ($this->active == 'N') {
+            if ($this->status == 1) {
 
                 $emailConfirmation = new EmailConfirmations();
 

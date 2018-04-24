@@ -16,7 +16,6 @@ class PermissionsController extends ControllerBase
     public function indexAction()
     {
         $this->view->setTemplateBefore('private');
-
         if ($this->request->isPost()) {
 
             // Validate the profile
