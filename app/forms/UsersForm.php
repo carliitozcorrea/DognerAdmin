@@ -36,6 +36,30 @@ class UsersForm extends Form
 
         $this->add($name);
 
+        $paternal = new Text('paternal', [
+            'placeholder' => 'Paternal'
+        ]);
+
+        $paternal->addValidators([
+            new PresenceOf([
+                'message' => 'The paternal is required'
+            ])
+        ]);
+
+        $this->add($paternal);
+
+        $maternal = new Text('maternal', [
+            'placeholder' => 'Maternal'
+        ]);
+
+        $maternal->addValidators([
+            new PresenceOf([
+                'message' => 'The paternal is required'
+            ])
+        ]);
+
+        $this->add($maternal);
+
         $email = new Text('email', [
             'placeholder' => 'Email'
         ]);
