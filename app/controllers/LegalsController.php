@@ -54,6 +54,32 @@ class LegalsController extends ControllerBase
                 'action' => 'search'
             ]);
         }
+
+        if ($this->request->isPost()) {
+
+            $legal->assign([
+                'content' => $this->request->getPost('content'),
+            ]);
+
+            $form = new LegalsForm($legal, [
+                'edit' => true
+            ]);
+
+
+            if ($form->isValid($this->request->getPost()) == false) {
+
+                foreach ($form->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+
+            } else {
+                if (!$legal->save()) {
+                    $this->flash->error($legal->getMessages());
+                } else {
+                    $this->flash->success("Legal was updated successfully");
+                }
+            }
+        }
         $this->view->legal = $legal;
 
         $this->view->form = new LegalsForm($legal, [
@@ -63,11 +89,6 @@ class LegalsController extends ControllerBase
 
     public function createAction(){
         $form = new LegalsForm(null);
-
-
-
-
         $this->view->form = $form;
-
     }
 }
