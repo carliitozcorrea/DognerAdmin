@@ -27,7 +27,12 @@ class Legals extends Model
 
     public function beforeValidationOnCreate(){}
 
-    public function beforeValidationOnUpdate(){}
+    public function beforeValidationOnUpdate(){
+        $today = new \DateTime();
+        $format = $today->format('Y-m-d H:i:s');
+        $this->modified = $format;
+        $this->version++;
+    }
 
     public function validation(){
         $validator = new Validation();
