@@ -4,11 +4,7 @@ namespace Vokuro\Forms;
 use Phalcon\Forms\Form;
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Hidden;
-use Phalcon\Forms\Element\Select;
 use Phalcon\Forms\Element\TextArea;
-use Phalcon\Validation\Validator\PresenceOf;
-use Phalcon\Validation\Validator\Email;
-use Vokuro\Models\Profiles;
 
 class LegalsForm extends Form
 {
@@ -29,7 +25,8 @@ class LegalsForm extends Form
 
         $name = new Text('name', [
             'placeholder' => 'Name',
-            'disabled' => $nameDisabled
+            'disabled' => $nameDisabled,
+            'class' => 'form-control',
         ]);
 
         $this->add($name);
@@ -42,75 +39,5 @@ class LegalsForm extends Form
 
         $this->add($content);
 
-//        $paternal = new Text('paternal', [
-//            'placeholder' => 'Paternal'
-//        ]);
-//
-//        $paternal->addValidators([
-//            new PresenceOf([
-//                'message' => 'The paternal is required'
-//            ])
-//        ]);
-//
-//        $this->add($paternal);
-//
-//        $maternal = new Text('maternal', [
-//            'placeholder' => 'Maternal'
-//        ]);
-//
-//        $maternal->addValidators([
-//            new PresenceOf([
-//                'message' => 'The paternal is required'
-//            ])
-//        ]);
-//
-//        $this->add($maternal);
-//
-//        $email = new Text('email', [
-//            'placeholder' => 'Email'
-//        ]);
-//
-//        $email->addValidators([
-//            new PresenceOf([
-//                'message' => 'The e-mail is required'
-//            ]),
-//            new Email([
-//                'message' => 'The e-mail is not valid'
-//            ])
-//        ]);
-//
-//        $this->add($email);
-//
-//        $profiles = Profiles::find([
-//            'active = :active:',
-//            'bind' => [
-//                'active' => 'Y'
-//            ]
-//        ]);
-//
-//        $this->add(new Select('profilesId', $profiles, [
-//            'using' => [
-//                'id',
-//                'name'
-//            ],
-//            'useEmpty' => true,
-//            'emptyText' => '...',
-//            'emptyValue' => ''
-//        ]));
-//
-//        $this->add(new Select('banned', [
-//            'Y' => 'Yes',
-//            'N' => 'No'
-//        ]));
-//
-//        $this->add(new Select('suspended', [
-//            'Y' => 'Yes',
-//            'N' => 'No'
-//        ]));
-//
-//        $this->add(new Select('active', [
-//            'Y' => 'Yes',
-//            'N' => 'No'
-//        ]));
     }
 }
