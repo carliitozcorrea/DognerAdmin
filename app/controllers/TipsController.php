@@ -93,7 +93,6 @@ class TipsController extends ControllerBase
                                         case 'video':
                                             $fileName = self::VIDEO_PREFIX . $this->request->getPost('title') . '.' . $file->getExtension();
                                             if ($file->getType() != 'video/mp4' && $file->getType() != 'image/png') {
-                                                $this->flash->error('Your Video must be a MP4 file');
                                                 $continue = false;
                                                 throw new \Exception("Your Video must be a MP4 file");
                                             }
