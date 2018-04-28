@@ -94,7 +94,7 @@ class UsersController extends ControllerBase
 
                     $this->flash->success("User was created successfully");
 
-                    Tag::resetInput();
+                    //Tag::resetInput();
                 }
             }
         }
