@@ -3,6 +3,8 @@
 namespace Vokuro\Models;
 
 use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Date as DateValidator;
 
 class Tips extends Model
 {
@@ -48,15 +50,15 @@ class Tips extends Model
      * @Column(column="description", type="string", nullable=false)
      */
     public $description;
-    
-        /**
+
+    /**
      *
      * @var string
      * @Column(column="description", type="string", nullable=false)
      */
     public $created;
-    
-        /**
+
+    /**
      *
      * @var string
      * @Column(column="description", type="string", nullable=false)
@@ -70,6 +72,50 @@ class Tips extends Model
     {
         $this->setSchema("dogner");
         $this->setSource("tips");
+    }
+
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            [
+                "created",
+                "modified",
+            ],
+            new DateValidator(
+                [
+                    "format" => "Y-m-d H:i:s",
+                    "message" => "The date is invalid",
+                ]
+            )
+        );
+        $validator->add(
+            [
+                "date",
+            ],
+            new DateValidator(
+                [
+                    "format" => "Y-m-d",
+                    "message" => "The date is invalid",
+                ]
+            )
+        );
+        return $this->validate($validator);
+    }
+    public function beforeValidationOnUpdate()
+    {
+        $today = new \DateTime();
+        $format = $today->format('Y-m-d H:i:s');
+        $this->modified = $format;
+    }
+
+    public function beforeValidationOnCreate()
+    {
+        $today = new \DateTime();
+        $format = $today->format('Y-m-d H:i:s');
+        $this->modified = $format;
+        $this->created = $format;
     }
 
     /**
